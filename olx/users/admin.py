@@ -10,8 +10,8 @@ from .models import User
 class UserAdmin(BaseUserAdmin):
     model = User
     fieldsets = BaseUserAdmin.fieldsets + (
-        (None, {'fields': ('phone_number', 'location', 'avatar', 'is_verified')}),
+        (None, {'fields': ('phone_number', 'location' )}),
     )
     add_fieldsets = BaseUserAdmin.add_fieldsets + (
-        (None, {'fields': ('phone_number', 'location', 'avatar', 'is_verified')}),
+        (None, {'fields': ('phone_number', 'location' )}),
     )
