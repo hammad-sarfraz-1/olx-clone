@@ -1,27 +1,26 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from .models import Category, Subcategory, Product, ProductField
+from .serializers import CategorySerializer, SubcategorySerializer, ProductSerializer, ProductFieldSerializer
 
-from rest_framework import viewsets, permissions
-from .models import Category, Subcategory, Product
-from .serializers import CategorySerializer,SubcategorySerializer, ProductSerializer
-
-# Create your views here.
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [permissions.AllowAny]
-
 
 class SubcategoryViewSet(viewsets.ModelViewSet):
     queryset = Subcategory.objects.all()
     serializer_class = SubcategorySerializer
-    permission_classes = [permissions.AllowAny]
 
 
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all().order_by('-created_at')
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class ProductFieldViewSet(viewsets.ModelViewSet):
+    queryset = ProductField.objects.all()
+    serializer_class = ProductFieldSerializer

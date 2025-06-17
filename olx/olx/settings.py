@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users',
+    
     'listings',
 ]
 
@@ -78,8 +79,9 @@ WSGI_APPLICATION = 'olx.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'olx_db',
+        # use postgres engine
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'olxDB',
         'USER': 'olx_user',
         'PASSWORD': 'olx_pass',
         'HOST': 'localhost',
