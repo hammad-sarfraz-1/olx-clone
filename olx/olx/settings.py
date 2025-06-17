@@ -81,9 +81,9 @@ DATABASES = {
     'default': {
         # use postgres engine
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'olxDB',
-        'USER': 'olx_user',
-        'PASSWORD': 'olx_pass',
+        'NAME': 'olxdb',
+        'USER': 'olxUser',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
 
