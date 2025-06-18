@@ -1,3 +1,4 @@
+# serializers.py
 from rest_framework import serializers
 from .models import Category, Subcategory, Product, ProductField
 
@@ -9,7 +10,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class SubcategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Subcategory
-        fields = '__all__'
+        fields = '__all__' 
 
 class ProductFieldSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,12 +19,12 @@ class ProductFieldSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     fields = ProductFieldSerializer(many=True)
-    
+
     class Meta:
         model = Product
-        fields = ['id',  'subcategory', 'title', 'description', 'price', 'created_at', 'fields']
-        read_only_fields = ['id', 'created_at','user']
-    
+        fields = ['id', 'subcategory', 'title', 'description', 'price', 'created_at', 'fields']
+        read_only_fields = ['id', 'created_at', 'user']
+
     def create(self, validated_data):
         fields_data = validated_data.pop('fields')
         product = Product.objects.create(**validated_data)

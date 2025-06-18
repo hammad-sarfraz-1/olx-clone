@@ -2,3 +2,5 @@ Django>=4.2,<5.0
 psycopg2-binary>=2.9
 djangorestframework >= 3.12,
 djangorestframework-simplejwt >= 4.6.0
+# precommit
+pre-commit>= 2.17.0
