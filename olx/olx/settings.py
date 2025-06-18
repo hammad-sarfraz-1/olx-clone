@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,14 +80,14 @@ WSGI_APPLICATION = "olx.wsgi.application"
 DATABASES = {
     "default": {
         # use postgres engine
-        # 'ENGINE': 'django.db.backends.postgresql',
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
         "NAME": "olxdb",
         "USER": "user1",
         "PASSWORD": "1234",
-        "HOST": "localhost",
-        "PORT": "8080",
+        "HOST": "db",
+        "PORT": "5432",
     }
 }
 
@@ -126,6 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Add this line
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
