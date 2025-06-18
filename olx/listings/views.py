@@ -1,14 +1,22 @@
 # views.py
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import Category, Subcategory, Product, ProductField
-from .serializers import CategorySerializer,SubcategorySerializer,ProductSerializer,ProductFieldSerializer
+
+from .models import Category, Product, ProductField, Subcategory
 from .permissions import IsAdminOrReadOnly
+from .serializers import (
+    CategorySerializer,
+    ProductFieldSerializer,
+    ProductSerializer,
+    SubcategorySerializer,
+)
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsAdminOrReadOnly]
+
 
 class SubcategoryViewSet(viewsets.ModelViewSet):
     queryset = Subcategory.objects.all()
@@ -16,6 +24,7 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
     serializer_class = SubcategorySerializer
     # print(serializer_class)
     permission_classes = [IsAdminOrReadOnly]
+
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
@@ -30,9 +39,9 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         return Product.objects.filter(user=user)
 
-
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
 
 class ProductFieldViewSet(viewsets.ModelViewSet):
     queryset = ProductField.objects.all()
