@@ -83,10 +83,10 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
         "NAME": "olxdb",
-        "USER": "olxUser",
+        "USER": "user1",
         "PASSWORD": "1234",
         "HOST": "localhost",
-        "PORT": "5432",
+        "PORT": "8080",
     }
 }
 
