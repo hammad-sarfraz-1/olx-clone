@@ -83,11 +83,11 @@ class OrderViewSet(viewsets.ModelViewSet):
                 try:
                     product = Product.objects.select_for_update().get(id=product_id)
                 except Product.DoesNotExist:
-                    errors.append(f"Product with ID {product_id} not found.")
+                    errors.append(f"Product of ID  {product_id} not found.")
                     continue
 
                 if product.is_sold:
-                    errors.append(f"Product '{product.title}' is already sold.")
+                    errors.append(f"Product '{product.title}' already sold.")
                     continue
 
                 validated_items.append(product)
