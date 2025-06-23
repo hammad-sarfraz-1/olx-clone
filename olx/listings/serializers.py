@@ -74,7 +74,7 @@ class OrderSerializer(serializers.ModelSerializer):
         buyer = self.context["request"].user
 
         if not items_data:
-            raise serializers.ValidationError("Order must contain at least one item.")
+            raise serializers.ValidationError("Order should contain at least one item.")
 
         order = Order.objects.create(buyer=buyer)
 
@@ -92,9 +92,7 @@ class OrderSerializer(serializers.ModelSerializer):
                     )
 
             if product_obj.is_sold:
-                raise serializers.ValidationError(
-                    f"{product_obj.title} is already sold."
-                )
+                raise serializers.ValidationError(f"{product_obj.title} already sold.")
 
             OrderItem.objects.create(
                 order=order, buyer=buyer, product=product_obj, price=product_obj.price
