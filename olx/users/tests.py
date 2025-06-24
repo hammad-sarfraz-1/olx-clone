@@ -8,11 +8,11 @@ User = get_user_model()
 class UserModelTests(TestCase):
     def test_user_creation(self):
         user = User.objects.create_user(
-            username="hammad",
-            password="securepass",
-            email="hammad@example.com",
-            phone_number="1234567890",
+            username="testUser",
+            password="12345",
+            email="test@example.com",
+            phone_number="827329820",
         )
-        self.assertEqual(user.username, "hammad")
-        self.assertTrue(user.check_password("securepass"))
-        self.assertEqual(str(user), "hammad")
+        self.assertEqual(user.username, "testUser")
+        self.assertTrue(user.check_password("12345"))
+        self.assertEqual(str(user), "testUser")
